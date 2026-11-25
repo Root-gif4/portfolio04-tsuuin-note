@@ -11,7 +11,7 @@ test("Googleマップ（PC）の情報欄をコピーした文を振り分ける
     "内科",
     "ルート",
     "保存",
-    "〒649-6200 和歌山県岩出市中黒1-2-3",
+    "〒100-0000 東京都見本区中町1-2-3",
     "営業時間外 ⋅ 営業開始: 9:00",
     "月曜日",
     "9時00分～12時30分",
@@ -22,11 +22,11 @@ test("Googleマップ（PC）の情報欄をコピーした文を振り分ける
     "定休日",
     "midori-clinic.example.jp",
     "0736-12-3456",
-    "XXXX+XX 岩出市、和歌山県",
+    "XXXX+XX 見本区、東京都",
   ].join("\n");
   const r = parsePlaceText(text);
   assert.equal(r.name, "みどり内科クリニック");
-  assert.equal(r.address, "〒649-6200 和歌山県岩出市中黒1-2-3");
+  assert.equal(r.address, "〒100-0000 東京都見本区中町1-2-3");
   assert.equal(r.tel, "0736-12-3456");
   assert.equal(r.url, "https://midori-clinic.example.jp");
   assert.equal(
@@ -38,7 +38,7 @@ test("Googleマップ（PC）の情報欄をコピーした文を振り分ける
 test("Google検索の「住所: 」のような見出し付きの文を振り分ける", () => {
   const text = [
     "さくら歯科医院",
-    "住所: 和歌山県和歌山市本町2-1",
+    "住所: 大阪府見本市本町2-1",
     "営業時間: 9:00～19:00",
     "電話: 073-123-4567",
     "ウェブサイト: https://sakura-dental.example.com/",
@@ -46,7 +46,7 @@ test("Google検索の「住所: 」のような見出し付きの文を振り分
   ].join("\n");
   const r = parsePlaceText(text);
   assert.equal(r.name, "さくら歯科医院");
-  assert.equal(r.address, "和歌山県和歌山市本町2-1");
+  assert.equal(r.address, "大阪府見本市本町2-1");
   assert.equal(r.hours, "9:00～19:00");
   assert.equal(r.tel, "073-123-4567");
   assert.equal(r.url, "https://sakura-dental.example.com/");
@@ -54,8 +54,8 @@ test("Google検索の「住所: 」のような見出し付きの文を振り分
 });
 
 test("スマホの「共有」で送られる名前とリンクだけでも使える", () => {
-  const r = parsePlaceText("岩出中央病院\nhttps://maps.app.goo.gl/xyz123");
-  assert.equal(r.name, "岩出中央病院");
+  const r = parsePlaceText("見本中央病院\nhttps://maps.app.goo.gl/xyz123");
+  assert.equal(r.name, "見本中央病院");
   assert.equal(r.mapUrl, "https://maps.app.goo.gl/xyz123");
   assert.equal(r.url, "");
 });
@@ -85,10 +85,10 @@ test("今日のお薬の数（頓服・やめた薬・期間外は数えない�
 });
 
 test("次回予約の .ics（時刻あり）", () => {
-  const ics = buildIcs({ title: "通院：みどり内科", date: "2026-11-02", time: "09:30", location: "岩出市, 中黒", uid: "x1" });
+  const ics = buildIcs({ title: "通院：みどり内科", date: "2026-11-02", time: "09:30", location: "見本区, 中町", uid: "x1" });
   assert.match(ics, /DTSTART:20261102T093000/);
   assert.match(ics, /DTEND:20261102T103000/);
-  assert.match(ics, /LOCATION:岩出市\\, 中黒/);
+  assert.match(ics, /LOCATION:見本区\\, 中町/);
 });
 
 test("1回の量を数字と単位に分ける", () => {

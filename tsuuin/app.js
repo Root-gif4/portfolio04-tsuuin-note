@@ -1288,7 +1288,7 @@
             3. ここに貼り付けて「振り分ける」
           </div>
           <div class="row" style="margin-bottom:8px">
-            <input type="search" id="place-q" placeholder="病院の名前（例：岩出 内科）" value="${esc(p.name)}" class="grow" style="width:auto;flex:1">
+            <input type="search" id="place-q" placeholder="病院の名前（例：駅前 内科）" value="${esc(p.name)}" class="grow" style="width:auto;flex:1">
           </div>
           <div class="row" style="margin-bottom:8px">
             <a class="btn small grow" id="open-maps" href="#" target="_blank" rel="noopener">Googleマップで探す</a>
