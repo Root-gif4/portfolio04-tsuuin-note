@@ -1,0 +1,12 @@
+{
+  "name": "通院ノート",
+  "short_name": "通院ノート",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f6f7",
+  "theme_color": "#2c6e8f",
+  "icons": [
+    { "src": "img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
